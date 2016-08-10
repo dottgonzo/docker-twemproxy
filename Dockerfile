@@ -9,8 +9,6 @@ RUN apt-get update \
     automake \
     libtool \
     build-essential \
-    ruby1.9.1-dev \
-    rubygems1.9.1 \
   \
   && cd /tmp \
   && git clone https://github.com/twitter/twemproxy \
@@ -24,7 +22,6 @@ RUN apt-get update \
   && make \
   && make install \
   && mkdir /etc/twemproxy \
-  && gem install nutcracker-web
   \
   && apt-get purge -y --auto-remove \
     autoconf \
@@ -43,8 +40,12 @@ RUN apt-get update \
   \
   && echo "====The end===="
 
+#    ruby-dev \
+#  && gem install nutcracker-web
+
 ADD docker /
 
-EXPOSE 6379 9292 22222
+EXPOSE 6379 9292
+#EXPOSE 6379 9292 22222
 
 WORKDIR /opt
