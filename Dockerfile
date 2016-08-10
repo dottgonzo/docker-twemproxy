@@ -4,6 +4,7 @@ MAINTAINER Yuri Vysotskiy (yfix) <yfix.dev@gmail.com>
 
 RUN apt-get update \
   && apt-get install -y \
+    git-core \
     autoconf \
     automake \
     libtool \
