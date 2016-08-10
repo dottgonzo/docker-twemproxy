@@ -1,0 +1,29 @@
+version: '2'
+services:
+  twemproxy:
+#    image: yfix/twemproxy
+    build: .
+    container_name: yfix_test_twemproxy
+    ports:
+      - 6379:6379
+      - 9292:9292
+      - 22222:22222
+    restart: always
+    links:
+      - redis1
+      - redis2
+      - redis3
+    volumes:
+      - ./docker/etc/twemproxy/:/etc/twemproxy/
+      - ./docker/etc/supervisor/conf.d/twemproxy.conf:/etc/supervisor/conf.d/twemproxy.conf
+      - ./docker/var/log/twemproxy/:/var/log/twemproxy/
+      - ./docker/var/log/supervisor/:/var/log/supervisor/
+  redis1:
+    image: yfix/redis
+    restart: always
+  redis2:
+    image: yfix/redis
+    restart: always
+  redis3:
+    image: yfix/redis
+    restart: always
