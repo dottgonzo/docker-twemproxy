@@ -45,6 +45,18 @@ RUN apt-get update \
 
 ADD docker /
 
+RUN mkdir -p /var/log/twemproxy
+RUN mkdir -p /var/log/supervisor
+RUN mkdir -p /etc/supervisor/conf.d
+RUN mkdir -p /etc/twemproxy
+
+COPY ./docker/etc/twemproxy/* /etc/twemproxy/
+COPY ./docker/etc/supervisor/conf.d/twemproxy.conf /etc/supervisor/conf.d/twemproxy.conf
+COPY ./docker/etc/supervisor/conf.d/twemproxy.conf /etc/supervisor/conf.d/twemproxy.conf
+
+
+
+
 EXPOSE 6379 9292
 #EXPOSE 6379 9292 22222
 

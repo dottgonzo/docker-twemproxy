@@ -9,6 +9,6 @@ redis-server:
   server_retry_timeout: 2000
   server_failure_limit: 2
   servers:
-   - redis1:6379:1
-   - redis2:6379:1
-   - redis3:6379:1
+   - redis_master1:6379:1
+   - redis_master2:6379:1
+   - redis_master3:6379:1
